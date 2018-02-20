@@ -15,11 +15,16 @@
 #
 
 $(call inherit-product-if-exists, vendor/huawei/kirin970-common/kirin970-common-vendor.mk)
+$(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
+    $(LOCAL_PATH)/overlay-carbon
+
+# KeyHandler
+PRODUCT_PACKAGES += \
+    org.carbonrom.keyhandler
 
 # Audio
 PRODUCT_COPY_FILES += \
@@ -42,10 +47,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
     android.hidl.manager@1.0
-
-# Input
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/keylayout/fingerprint.kl:system/usr/keylayout/fingerprint.kl
 
 # NFC
 PRODUCT_PACKAGES += \

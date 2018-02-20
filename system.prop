@@ -6,5 +6,8 @@ ro.config.vc_call_vol_steps=7
 # Enable ADB authentication
 ro.adb.secure=1
 
+# Disable FP nav by default
+sys.fpnav.enabled=0
+
 # Perf
 ro.vendor.qti.sys.fw.bg_apps_limit=60
