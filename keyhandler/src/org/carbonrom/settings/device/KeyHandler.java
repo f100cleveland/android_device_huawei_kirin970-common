@@ -37,6 +37,7 @@ public class KeyHandler implements DeviceKeyHandler {
     private static final int KEY_FINGERPRINT_LONGPRESS = 28;
     private static final int KEY_FINGERPRINT_LEFT = 105;
     private static final int KEY_FINGERPRINT_RIGHT = 106;
+    private static final int KEY_FINGERPRINT_WAKEUP = 118;
     private static final int KEY_FINGERPRINT_CLICK = 174;
     private static String FPNAV_ENABLED_PROP = "sys.fpnav.enabled";
 
@@ -44,9 +45,10 @@ public class KeyHandler implements DeviceKeyHandler {
         KEY_FINGERPRINT_LONGPRESS,
         KEY_FINGERPRINT_LEFT,
         KEY_FINGERPRINT_RIGHT,
+        KEY_FINGERPRINT_WAKEUP,
         KEY_FINGERPRINT_CLICK,
         // Ignored key list
-        113, 117, 118, 119
+        113, 117, 119
     };
 
     private final Context mContext;
@@ -84,6 +86,11 @@ public class KeyHandler implements DeviceKeyHandler {
             case KEY_FINGERPRINT_RIGHT:
                 if (!keyguardManager.inKeyguardRestrictedInputMode()) {
                     triggerVirtualKeypress(mHandler, KeyEvent.KEYCODE_APP_SWITCH);
+                }
+                break;
+            case KEY_FINGERPRINT_WAKEUP:
+                if (!keyguardManager.inKeyguardRestrictedInputMode()) {
+                    triggerVirtualKeypress(mHandler, KeyEvent.KEYCODE_WAKEUP);
                 }
                 break;
             case KEY_FINGERPRINT_CLICK:
